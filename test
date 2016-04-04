@@ -1,0 +1,13 @@
+import mysql.connector
+from mysql.connector import errorcode
+import json
+import urllib
+
+def fetchDataForKey():
+    query = urllib.urlencode({'q': 'Network'})
+    url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s' % query 
+    search_response = urllib.urlopen(url)
+    search_results = search_response.read()
+    results = json.loads(search_results)
+    data = results['responseData']
+    print data
